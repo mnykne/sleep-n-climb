@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/item1"
+        android:id="@+id/alarm_setup_cancel_btn"
         android:background="?attr/actionBarItemBackground"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -18,7 +18,7 @@
         android:layout_alignParentTop="true"/>
 
     <Button
-        android:id="@+id/item2"
+        android:id="@+id/alarm_setup_test_btn"
         android:background="?attr/actionBarItemBackground"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -27,11 +27,11 @@
         android:textColor="@color/colorActionBarButtonText"
         android:text="Test"
         android:layout_marginEnd="24dp"
-        android:layout_toStartOf="@+id/item3"
+        android:layout_toStartOf="@+id/alarm_setup_save_btn"
         android:layout_alignParentTop="true" />
 
     <Button
-        android:id="@+id/item3"
+        android:id="@+id/alarm_setup_save_btn"
         android:background="?attr/actionBarItemBackground"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

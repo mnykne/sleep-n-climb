@@ -2,12 +2,13 @@
 
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/colorWhite"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/background"
+    android:theme="@style/BoxTheme">
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,7 +19,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="To dismiss the alarm, please walk 10 more steps or snooze!" />
+        android:text="Shake the device to dismiss the alarm!" />
 
     <LinearLayout
         app:layout_constraintBottom_toBottomOf="parent"

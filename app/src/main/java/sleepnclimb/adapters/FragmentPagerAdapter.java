@@ -4,7 +4,7 @@
  *         Distributed Systems Course Work (Spring 2017)
  */
 
-package snoozebattle.adapters;
+package sleepnclimb.adapters;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -20,6 +20,7 @@ import java.util.List;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class FragmentPagerAdapter extends FragmentStatePagerAdapter {
+
     private static final String TAG =
             FragmentPagerAdapter.class.getSimpleName();
 

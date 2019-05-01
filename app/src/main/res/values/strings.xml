@@ -1,42 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <resources>
-    <string name="app_name">SnoozeBattle</string>
-
-    <string-array name="pref_dismiss_method_photo_categories_nb_entries">
-        <item>One</item>
-        <item>Two</item>
-        <item>Three</item>
-        <item>Four</item>
-        <item>Five</item>
-    </string-array>
-
-    <string-array name="pref_dismiss_method_photo_categories_nb_values">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-    </string-array>
+    <string name="app_name">Sleep\'N\'Climb</string>
 
     <string-array name="pref_dismiss_method_photo_categories_entries">
         <item>Apple</item>
         <item>Banana</item>
+        <item>Can</item>
         <item>Cat</item>
+        <item>Cup</item>
+        <item>Duck</item>
     </string-array>
 
     <string-array name="pref_dismiss_method_photo_categories_values">
         <item>apple</item>
         <item>banana</item>
+        <item>can</item>
         <item>cat</item>
+        <item>cup</item>
+        <item>duck</item>
     </string-array>
 
     <string-array name="pref_dismiss_method_entries">
+        <item>Default</item>
         <item>Photo</item>
-        <item>Step Counting</item>
+        <item>Shaking</item>
     </string-array>
 
     <string-array name="pref_dismiss_method_values">
+        <item>default</item>
         <item>photo</item>
-        <item>step_counting</item>
+        <item>shaking</item>
     </string-array>
 
     <string-array name="pref_snooze_interval_entries">
@@ -49,15 +43,12 @@
     </string-array>
 
     <string-array name="pref_snooze_interval_values">
-        <item>5</item>
-        <item>10</item>
-        <item>20</item>
-        <item>30</item>
-        <item>40</item>
-        <item>50</item>
+        <item>300000</item>
+        <item>600000</item>
+        <item>1200000</item>
+        <item>1800000</item>
+        <item>2400000</item>
+        <item>3000000</item>
     </string-array>
-
-
-
 
 </resources>

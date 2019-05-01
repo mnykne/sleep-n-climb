@@ -4,23 +4,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <EditTextPreference
-        android:key="edit"
+    <Preference
+        android:key="pref_time"
         android:title="Time"
         android:summary="07:00"
-        android:dialogTitle="Alarm time"
-        android:defaultValue="07:00"
-        android:inputType="text"
-        android:singleLine="true"
         app:iconSpaceReserved="false" />
 
     <android.support.v7.preference.PreferenceScreen
         android:key="pref_sound"
         android:title="Sound"
-        android:summary="Default, 50 \%"
+        android:summary="Choose alarm tune and volume"
         app:iconSpaceReserved="false">
 
-        <!-- TODO: dynamic ringtone list -->
         <ListPreference
             android:key="pref_alarm_tone"
             android:entries="@array/pref_dismiss_method_values"
@@ -38,51 +33,25 @@
             app:iconSpaceReserved="false" />
 
     </android.support.v7.preference.PreferenceScreen>
-    
+
     <android.support.v7.preference.PreferenceScreen
         android:key="pref_dismiss"
-        android:summary="Photo"
         android:title="Dismiss method"
+        android:summary="Choose dismiss method"
         app:iconSpaceReserved="false">
-
-        <!--<ListPreference-->
-            <!--android:key="pref_dismiss_method"-->
-            <!--android:entries="@array/pref_dismiss_method_entries"-->
-            <!--android:entryValues="@array/pref_dismiss_method_values"-->
-            <!--android:title="Dismiss method"-->
-            <!--android:summary="Step counting"-->
-            <!--app:iconSpaceReserved="false" />-->
-
-        <!--<ListPreference-->
-            <!--android:key="pref_dismiss_method_photo_categories_nb"-->
-            <!--android:entries="@array/pref_dismiss_method_entries"-->
-            <!--android:entryValues="@array/pref_dismiss_method_values"-->
-            <!--android:summary="100"-->
-            <!--android:title="Number of required steps"-->
-            <!--app:iconSpaceReserved="false" />-->
 
         <ListPreference
             android:key="pref_dismiss_method"
             android:entries="@array/pref_dismiss_method_entries"
             android:entryValues="@array/pref_dismiss_method_values"
             android:title="Dismiss method"
-            android:summary="Photo"
-            app:iconSpaceReserved="false" />
-
-        <MultiSelectListPreference
-            android:key="pref_dismiss_method_photo_categories"
-            android:entries="@array/pref_dismiss_method_photo_categories_entries"
-            android:entryValues="@array/pref_dismiss_method_photo_categories_values"
-            android:summary="Apple, banana, cat"
-            android:title="Categories"
             app:iconSpaceReserved="false" />
 
         <ListPreference
-            android:key="pref_dismiss_method_photo_categories_nb"
-            android:entries="@array/pref_dismiss_method_photo_categories_nb_entries"
-            android:entryValues="@array/pref_dismiss_method_photo_categories_nb_values"
-            android:summary="Two"
-            android:title="Number of required categories"
+            android:key="pref_dismiss_method_photo_categories"
+            android:entries="@array/pref_dismiss_method_photo_categories_entries"
+            android:entryValues="@array/pref_dismiss_method_photo_categories_values"
+            android:title="Categories"
             app:iconSpaceReserved="false" />
 
     </android.support.v7.preference.PreferenceScreen>

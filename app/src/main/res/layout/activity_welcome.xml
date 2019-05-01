@@ -5,18 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/background">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Snooze"
-        android:textSize="60sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Battle"
-        android:textSize="60sp" />
+        android:text="Sleep'N'Climb"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorWhite"/>
 
 </LinearLayout>
