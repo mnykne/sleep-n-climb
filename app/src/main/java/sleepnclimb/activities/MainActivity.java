@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 import sleepnclimb.R;
 import sleepnclimb.adapters.FragmentPagerAdapter;
-import sleepnclimb.fragments.AchievementsFragment;
+import sleepnclimb.fragments.StatusFragment;
 import sleepnclimb.fragments.AlarmListFragment;
 import sleepnclimb.fragments.SettingsFragment;
 
@@ -23,29 +23,23 @@ public class MainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         mTabLayout = findViewById(R.id.tab_layout);
         mViewPager = findViewById(R.id.view_pager);
-
         FragmentManager fragmentManager = getSupportFragmentManager();
         mFragmentPagerAdapter = new FragmentPagerAdapter(this, fragmentManager);
-
         mFragmentPagerAdapter.addPage(new FragmentPagerAdapter.Page()
                 .setFragmentClass(AlarmListFragment.class));
         mFragmentPagerAdapter.addPage(new FragmentPagerAdapter.Page()
-                .setFragmentClass(AchievementsFragment.class));
+                .setFragmentClass(StatusFragment.class));
         mFragmentPagerAdapter.addPage(new FragmentPagerAdapter.Page()
                 .setFragmentClass(SettingsFragment.class));
-
         mViewPager.setAdapter(mFragmentPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
-
         int[] drawables = {
             R.drawable.ic_alarm,
-            R.drawable.ic_achievements,
+            R.drawable.ic_status,
             R.drawable.ic_settings
         };
-
         for (int i = 0; i < mTabLayout.getTabCount(); i++) {
             ImageView imageView = new ImageView(this);
             imageView.setImageResource(drawables[i]);
@@ -53,9 +47,7 @@ public class MainActivity extends AppCompatActivity {
             mTabLayout.getTabAt(i).setCustomView(imageView);
             mTabLayout.getTabAt(i).setText("");
         }
-
         mTabLayout.getTabAt(0).getCustomView().setAlpha(1);
-
         getSupportActionBar().hide();
         mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

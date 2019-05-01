@@ -29,7 +29,7 @@ import sleepnclimb.daos.CheckpointDao;
 import sleepnclimb.databases.AppDatabase;
 import sleepnclimb.models.Checkpoint;
 
-public class AchievementsFragment extends Fragment {
+public class StatusFragment extends Fragment {
 
     TextView mAltitudeIndicator;
     TextView mOxygenIndicator;
@@ -41,7 +41,7 @@ public class AchievementsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_achievements,
+        View view = inflater.inflate(R.layout.fragment_status,
                 container, false);
         mAltitudeIndicator = view.findViewById(R.id.altitude_indicator);
         mOxygenIndicator = view.findViewById(R.id.oxygen_indicator);
@@ -57,7 +57,7 @@ public class AchievementsFragment extends Fragment {
                 updateOxygenHistory(checkpoints);
             }
         };
-        mCheckpointViewModel.getAll().observe(AchievementsFragment.this, mCheckpointObserver);
+        mCheckpointViewModel.getAll().observe(StatusFragment.this, mCheckpointObserver);
         return view;
     }
 

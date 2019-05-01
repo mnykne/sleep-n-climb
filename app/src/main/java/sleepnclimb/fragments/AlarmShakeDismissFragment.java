@@ -9,12 +9,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
 import sleepnclimb.R;
 import sleepnclimb.activities.WakeUpActivity;
 
 public class AlarmShakeDismissFragment extends Fragment implements SensorListener {
 
     SensorManager mSensorManager;
+    Button mSnoozeButton;
     long mLastUpdate;
     float mLastX;
     float mLastY;
@@ -24,8 +27,16 @@ public class AlarmShakeDismissFragment extends Fragment implements SensorListene
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_alarm_step_dismiss,
+        View view = inflater.inflate(R.layout.fragment_alarm_shake_dismiss,
                 container, false);
+        final WakeUpActivity wakeUpActivity = ((WakeUpActivity) getActivity());
+        mSnoozeButton = view.findViewById(R.id.btn_snooze);
+        mSnoozeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                wakeUpActivity.dismissAndSnooze();
+            }
+        });
         mSensorManager = (SensorManager) getContext().getSystemService(Context.SENSOR_SERVICE);
         return view;
     }

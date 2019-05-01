@@ -57,7 +57,7 @@ public class WakeUpActivity extends AppCompatActivity {
               WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
             | WindowManager.LayoutParams.FLAG_FULLSCREEN
             | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
-          | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+            | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
         );
         mAlarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         TextView timeView = findViewById(R.id.alarm_time_2);
@@ -143,7 +143,9 @@ public class WakeUpActivity extends AppCompatActivity {
     private void saveCheckpoint() {
         Checkpoint checkpoint = new Checkpoint();
         checkpoint.snoozeCount = mSnoozeCount;
+        CheckpointUtils.evaluate(checkpoint);
         CheckpointUtils.save(this, checkpoint);
+        CheckpointUtils.notify(this, checkpoint);
     }
 
     public void snooze() {
@@ -153,12 +155,15 @@ public class WakeUpActivity extends AppCompatActivity {
             Intent myIntent = new Intent(getApplicationContext(), WakeUpActivity.class);
             myIntent.putExtra("cid", mAlarm.cid);
             PendingIntent pendingIntent = PendingIntent.getActivity(
-                    getApplicationContext(), 0, myIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+                getApplicationContext(),
+                (int) mAlarm.cid, myIntent,
+                PendingIntent.FLAG_CANCEL_CURRENT);
             mAlarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
         }
     }
 
     private void startAlarmSound() {
+        float volume = (float) mAlarm.alarmVolume / 100.0f;
         Uri ringtoneUri = Uri.parse(mAlarm.alarmTone);
         mMediaPlayer = new MediaPlayer();
         class Listener implements MediaPlayer.OnPreparedListener {
@@ -169,6 +174,7 @@ public class WakeUpActivity extends AppCompatActivity {
         }
         mMediaPlayer.setOnPreparedListener(new Listener());
         mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        mMediaPlayer.setVolume(volume, volume);
         try {
             mMediaPlayer.setDataSource(getApplicationContext(), ringtoneUri);
         } catch (IOException e) {

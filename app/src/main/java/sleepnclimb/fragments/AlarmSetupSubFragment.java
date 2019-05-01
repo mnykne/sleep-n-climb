@@ -171,7 +171,8 @@ public class AlarmSetupSubFragment extends PreferenceFragmentCompat {
                 int hour = currentTime.get(Calendar.HOUR_OF_DAY);
                 int minute = currentTime.get(Calendar.MINUTE);
                 TimePickerDialog mTimePicker;
-                mTimePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                mTimePicker = new TimePickerDialog(getActivity(),
+                        new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                         setTime(prefTime, selectedHour, selectedMinute);

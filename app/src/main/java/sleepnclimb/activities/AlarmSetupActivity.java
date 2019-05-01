@@ -72,24 +72,24 @@ public class AlarmSetupActivity extends AppCompatActivity
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         LayoutInflater li = LayoutInflater.from(this);
-        View ab_custom = li.inflate(R.layout.actionbar_alarm_setup, null);
-        getSupportActionBar().setCustomView(ab_custom);
+        View abCustom = li.inflate(R.layout.actionbar_alarm_setup, null);
+        getSupportActionBar().setCustomView(abCustom);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
-        mTestButton = ab_custom.findViewById(R.id.alarm_setup_test_btn);
+        mTestButton = abCustom.findViewById(R.id.alarm_setup_test_btn);
         mTestButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                testAlarm();
            }
         });
-        mCancelButton = ab_custom.findViewById(R.id.alarm_setup_cancel_btn);
+        mCancelButton = abCustom.findViewById(R.id.alarm_setup_cancel_btn);
         mCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
-        mSaveButton = ab_custom.findViewById(R.id.alarm_setup_save_btn);
+        mSaveButton = abCustom.findViewById(R.id.alarm_setup_save_btn);
         mSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +97,6 @@ public class AlarmSetupActivity extends AppCompatActivity
                 onBackPressed();
             }
         });
-
     }
 
     public Alarm getAlarm() {

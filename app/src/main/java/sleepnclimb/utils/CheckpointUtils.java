@@ -13,6 +13,16 @@ public class CheckpointUtils {
     public static void save(Context context, Checkpoint checkpoint) {
         AppDatabase db = AppDatabase.getInstance(context);
         CheckpointDao checkpointDao = db.checkpointDao();
+        checkpointDao.insertAll(checkpoint);
+    }
+
+    public static void reset(Context context) {
+        AppDatabase db = AppDatabase.getInstance(context);
+        CheckpointDao checkpointDao = db.checkpointDao();
+        checkpointDao.deleteAll();
+    }
+
+    public static void evaluate(Checkpoint checkpoint) {
         checkpoint.altitude = 0;
         checkpoint.oxygen = -1;
         if (checkpoint.snoozeCount == 0) {
@@ -30,7 +40,10 @@ public class CheckpointUtils {
         } else {
             checkpoint.altitude += 50 + (int) Math.ceil(Math.random() * 10);
         }
-        String text = "";
+    }
+
+    public static void notify(Context context, Checkpoint checkpoint) {
+        String text;
         if (checkpoint.oxygen > 0) {
             text = "You climbed "
                 + checkpoint.altitude
@@ -41,14 +54,13 @@ public class CheckpointUtils {
             text = "You climbed "
                 + checkpoint.altitude
                 + " units and lost "
-                + checkpoint.oxygen
+                + Math.abs(checkpoint.oxygen)
                 + " units of oxygen!";
         } else {
             text = "You climbed "
                 + checkpoint.altitude
                 + " units and gained no oxygen!";
         }
-        checkpointDao.insertAll(checkpoint);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(
                 context, "status")
                 .setSmallIcon(R.drawable.ic_alarm)
@@ -60,11 +72,5 @@ public class CheckpointUtils {
                 .setDefaults(NotificationCompat.DEFAULT_VIBRATE);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         notificationManager.notify(1, builder.build());
-    }
-
-    public static void reset(Context context) {
-        AppDatabase db = AppDatabase.getInstance(context);
-        CheckpointDao checkpointDao = db.checkpointDao();
-        checkpointDao.deleteAll();
     }
 }

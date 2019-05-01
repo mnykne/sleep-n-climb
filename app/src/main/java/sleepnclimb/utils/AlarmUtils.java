@@ -67,7 +67,11 @@ public class AlarmUtils {
         );
         Toast.makeText(
             context,
-            "Alarm in " + timeDifference/1000/60/60 + " hours (" + timeDifference/1000/60 + " minutes)",
+            "Alarm in "
+                + timeDifference/1000/60/60
+                + " hours ("
+                + timeDifference/1000/60
+                + " minutes)",
             Toast.LENGTH_LONG
         ).show();
     }

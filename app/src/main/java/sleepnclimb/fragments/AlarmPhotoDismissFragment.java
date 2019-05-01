@@ -36,6 +36,7 @@ public class AlarmPhotoDismissFragment extends Fragment {
     static final String CLARIFAI_API_CODE = "YOUR_API_KEY";
 
     Button mPhotoButton;
+    Button mSnoozeButton;
     TextView mPhotoCategory;
     ImageView mPhotoPlaceholder;
     Handler mFgHandler;
@@ -47,7 +48,15 @@ public class AlarmPhotoDismissFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_alarm_photo_dismiss,
                 container, false);
-
+        final WakeUpActivity wakeUpActivity = ((WakeUpActivity) getActivity());
+        Alarm alarm = wakeUpActivity.getAlarm();
+        mSnoozeButton = view.findViewById(R.id.btn_snooze);
+        mSnoozeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                wakeUpActivity.dismissAndSnooze();
+            }
+        });
         mPhotoButton = view.findViewById(R.id.take_photo_btn);
         mPhotoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,11 +67,8 @@ public class AlarmPhotoDismissFragment extends Fragment {
                 }
             }
         });
-
         mPhotoPlaceholder = view.findViewById(R.id.photo_placeholder);
         mPhotoCategory = view.findViewById(R.id.dismiss_category);
-
-        Alarm alarm = ((WakeUpActivity) getActivity()).getAlarm();
         mPhotoCategory.setText(
                 "Take a photo of '"
                 + alarm.objectCategories
