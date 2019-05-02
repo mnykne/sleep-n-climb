@@ -130,7 +130,9 @@ public class WakeUpActivity extends AppCompatActivity {
     }
 
     public void dismissAndFinalize() {
-        saveCheckpoint();
+        if (mAlarm.cid != 1) {
+            saveCheckpoint();
+        }
         dismiss();
     }
 
